@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow');
-@import url('https://fonts.googleapis.com/css2?family=Fraunces');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@900&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -10,7 +11,7 @@
 
 nav {
     width: 100%;
-    height: 10vh;
+    height: 12.5vh;
     position: absolute;
     top: 0;
     z-index: 5;
@@ -32,12 +33,37 @@ nav .row .logo {
     margin: 0 1vw;
 }
 
+nav .row .hamburger {
+    display: none;
+}
+
 nav .row ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     float: left;
     list-style: none;
-    margin: 0 1vw;
-    font-family: "Barlow";
-    font-weight: 600;
+    font-size: 1vw;
+    margin: 0 0.5vw;
+    font-family: "Fraunces";
+    font-weight: 700;
+    color: white;
+    width: 100px;
+    height: 7.5vh;
+    border-radius: 25px;
+}
+
+nav .row ul li:hover {
+    font-weight: 900;
+    background-color: #6fcfff;
+    cursor: pointer;
+}
+
+nav .row ul .active {
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
 
@@ -51,20 +77,33 @@ header {
     position: relative;
 }
 
-header .text-header {
-    position: absolute;
-    top: 25%;
-    width: 100%;
-    z-index: 2;
-    color: white;
-    text-align: center;
-    font-family: "Fraunces";
-    letter-spacing: 0.5vw;
-    font-size: 2.5vw;
-    font-weight: 900;
+header .desktop {
+    display: block;
 }
 
-header .img-header {
+header .mobile {
+    display: none;
+}
+
+header .text-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+}
+
+header .text-header h3 {
+    color: white;
+    font-family: "Fraunces";
+    letter-spacing: 0.5vw;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+header .desktop,
+header .mobile {
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -78,43 +117,81 @@ header .img-header {
 
 /* start section 1 - 2 */
 
-section .row {
+section .row-1,
+section .row-2 {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
 }
 
-section .row .text-section {
-    min-width: 50%;
+section .row-1 .text-section,
+section .row-2 .text-section {
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-section .row .text-section .text h2 {
+section .row-1 .text-section .text h2,
+section .row-2 .text-section .text h2 {
     font-family: "Fraunces";
     font-weight: 900;
-    font-size: 2.5vw;
-    width: 20vw;
+    font-size: 2.3rem;
+    width: 425px;
 }
 
-section .row .text-section .text p {
+section .row-1 .text-section .text p,
+section .row-2 .text-section .text p {
     color: #93949f;
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Barlow";
     font-size: 18px;
-    width: 32.5vw;
+    width: 450px;
 }
 
-section .row .text-section .text h4 {
+section .row-1 .text-section .text .underline,
+section .row-2 .text-section .text .underline {
+    position: relative;
+    width: 10vw;
+    text-align: center;
+}
+
+section .row-1 .text-section .text .underline h4,
+section .row-2 .text-section .text .underline h4 {
+    position: relative;
+    z-index: 5;
     font-family: "Fraunces";
-    font-weight: 900;
+    font-weight: 700;
 }
 
-section .row .photo-section {
-    background-color: violet;
-    min-width: 100%;
-    background-size: cover;
+section .row-1 .text-section .text .underline .color {
+    position: absolute;
+    bottom: 0;
+    width: 10vw;
+    height: 10px;
+    background-color: #fff2b9;
+    border-radius: 25px;
+    opacity: 75%;
+}
+
+section .row-2 .text-section .text .underline .color {
+    position: absolute;
+    bottom: 0;
+    width: 10vw;
+    height: 10px;
+    background-color: #ffdcd7;
+    border-radius: 25px;
+    opacity: 75%;
+}
+
+section .row-1 .photo,
+section .row-2 .photo {
+    width: 50%;
+}
+
+section .row-1 .photo img,
+section .row-2 .photo img {
+    height: 100%;
 }
 
 
@@ -134,8 +211,19 @@ section .row-3 .right {
     position: relative;
 }
 
+section .row-3 .left .dekstop,
+section .row-3 .right .dekstop {
+    display: block;
+}
+
+section .row-3 .left .mobile,
+section .row-3 .right .mobile {
+    display: none;
+}
+
 section .row-3 .left img,
 section .row-3 .right img {
+    width: 100%;
     height: 100%;
 }
 
@@ -162,12 +250,12 @@ section .row-3 .left .text-section-1 h2,
 section .row-3 .right .text-section-2 h2 {
     font-family: "Fraunces";
     font-weight: 900;
-    font-size: 2.5vw;
+    font-size: 28px;
 }
 
 section .row-3 .left .text-section-1 p,
 section .row-3 .right .text-section-2 p {
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Barlow";
     font-size: 18px;
 }
@@ -179,7 +267,7 @@ section .row-3 .right .text-section-2 p {
 /* start testimonials */
 
 section .testimonial {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,7 +288,7 @@ section .row-testimonial {
 }
 
 section .row-testimonial .card {
-    width: 25vw;
+    width: 26vw;
     height: auto;
     text-align: center;
     padding: 2.5vw;
@@ -213,7 +301,7 @@ section .row-testimonial .card img {
 
 section .row-testimonial .card p {
     color: hsl(232, 10%, 55%);
-    font-weight: 700;
+    font-weight: 600;
     font-family: "Barlow";
     font-size: 18px;
 }
@@ -227,7 +315,7 @@ section .row-testimonial .card .profile h4 {
 
 section .row-testimonial .card .profile h6 {
     color: hsl(232, 10%, 55%);
-    font-weight: 900;
+    font-weight: 600;
     font-family: "Barlow";
     font-size: 14px;
     margin-top: 10px;
@@ -283,7 +371,7 @@ footer .footer-container .nav {
 
 footer .footer-container .nav li {
     font-family: "Barlow";
-    font-weight: 700;
+    font-weight: 600;
     margin: 0 1.5vw;
 }
 
@@ -299,3 +387,143 @@ footer .footer-container .social-media li {
 
 
 /* end footer */
+
+
+/* start mobile */
+
+@media (max-width: 767px) {
+    /* start navbar */
+    nav .row .navbar {
+        display: none;
+    }
+    nav .row .logo {
+        margin: 0 3vw;
+    }
+    nav .row .hamburger {
+        display: block;
+        margin: 0 3vw;
+    }
+    /* end navbar */
+    /* start header */
+    header .desktop {
+        display: none;
+    }
+    header .mobile {
+        display: block;
+    }
+    /* end header */
+    /* start section 1 - 2 */
+    section .row-1 {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    section .row-2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    section .row-1 .text-section,
+    section .row-2 .text-section {
+        min-width: 100%;
+    }
+    section .row-1 .text-section .text,
+    section .row-2 .text-section .text {
+        margin: 50px;
+        text-align: center;
+    }
+    section .row-1 .text-section .text h2,
+    section .row-2 .text-section .text h2 {
+        font-size: 2rem;
+        width: 100%;
+    }
+    section .row-1 .text-section .text p,
+    section .row-2 .text-section .text p {
+        width: 100%;
+        font-size: 15px;
+    }
+    section .row-1 .text-section .text .underline,
+    section .row-2 .text-section .text .underline {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+    section .row-1 .text-section .text .underline .color {
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35vw;
+        height: 10px;
+    }
+    section .row-2 .text-section .text .underline .color {
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35vw;
+        height: 10px;
+    }
+    section .row-1 .photo,
+    section .row-2 .photo {
+        width: 100%;
+    }
+    /* end section 1 - 2 */
+    /* start section 3 */
+    section .row-3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    section .row-3 .left .dekstop,
+    section .row-3 .right .dekstop {
+        display: none;
+    }
+    section .row-3 .left .mobile,
+    section .row-3 .right .mobile {
+        display: block;
+    }
+    section .row-3 .left .text-section-1,
+    section .row-3 .right .text-section-2 {
+        width: 90%;
+    }
+    section .row-3 .left .text-section-1 h2,
+    section .row-3 .right .text-section-2 h2 {
+        font-size: 28px;
+    }
+    section .row-3 .left .text-section-1 p,
+    section .row-3 .right .text-section-2 p {
+        font-size: 16px;
+    }
+    /* end section 3 */
+    /* start testimonials */
+    section .testimonial {
+        padding: 40px;
+    }
+    section .row-testimonial {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    section .row-testimonial .card {
+        margin: 25px 0;
+        width: 100%;
+    }
+    section .row-testimonial .card p {
+        font-size: 16px;
+    }
+    /* end testimonials  */
+    /* start image */
+    section .row-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* end image */
+    /* start footer */
+    footer .footer-container {
+        width: 100%;
+    }
+    footer .footer-container .social-media li {
+        margin: 0 5vw;
+    }
+    /* end footer */
+}
+
+
+/* end mobile */
